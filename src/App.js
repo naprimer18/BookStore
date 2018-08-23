@@ -10,45 +10,37 @@ class App extends Component {
       this.bookCost.value = '';
   }
 
-  findBook() {
-    console.log('findBook', this.searchInput.value);
-    this.props.onFindBook(this.searchInput.value);
-  }
-
-  deleteBooks() {
-    console.log("deleteBooks");
-    this.props.onDeleteBooks();
-    
-  }
-
   render() {
     console.log(this.props.Books);
     return (
       <div className ="redact">
-        <div>
+        <React.Fragment>
           <input type="text" ref={(input) => { this.bookName = input }} placeholder="bookName" />
           <input type="text" ref={(input) => { this.autorName = input }} placeholder="autorName" />
           <input type="text" ref={(input) => {this.bookCost = input }} placeholder="bookCost in BYN"/>
           <button onClick={this.addBook.bind(this)}>Add Book</button>
-        </div>
-        <div>
-          <input type="text" ref={(input) => { this.searchInput = input }} placeholder="Enter the title"/>
-          <button onClick={this.findBook.bind(this)}>Find Book</button >
-        </div>
+        </React.Fragment>
 
         <div>
-           <button onClick={this.deleteBooks.bind(this)}>Delete Book</button >
+          <input type="text" ref={(input) => { this.searchInput = input }} placeholder="Enter the title"/>
+          <button onClick={() => this.props.onFindBook(this.searchInput.value)}>Find Book</button >
         </div>
+
+        
 
         <ol>
           {this.props.Books.map((Book, index) =>
-            <li key={index}>{Book.name}</li>
+            <li key={index}>
+            <button className="deletButton" onClick={() => this.props.onRemoveBooks(index)}>✖</button >
+            {Book.name}
+             </li>
           )}
         </ol>
       </div>
     );
   }
 }
+
 
 export default connect(
   state => ({
@@ -68,8 +60,9 @@ export default connect(
       dispatch({ type: 'FIND_BOOK', payload: name});
     },
 
-    onDeleteBooks: (id) => {
-      dispatch({ type: 'DELETE_BOOK', payload: { id } });
+   onRemoveBooks: (index) => {
+      console.log("deleted " + index);
+      dispatch({ type: 'DELETE_BOOK', payload: index  } );
     }
     
   })

@@ -11,11 +11,20 @@ const initialState = [
 ];
 
 export default function books(state = initialState, action) {
-  if (action.type === 'ADD_BOOK') {
-    return [
-      ...state,
-      action.payload
-    ];
-  } 
-  return state;
-}
+    switch (action.type) {
+        case  'ADD_BOOK':
+            return [
+              ...state,
+              action.payload
+            ];
+        case  'DELETE_BOOK':
+          const newArr = [
+          ...state.slice(0, action.payload), 
+          ...state.slice(action.payload+1), 
+        ]
+            return newArr;
+
+        default:
+          return state;
+  }
+};

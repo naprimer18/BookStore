@@ -2,21 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class About extends Component {
- 
-  findBook() {
-    console.log('findBook', this.searchInput.value);
-    this.props.onFindBook(this.searchInput.value);
-  }
 
   render() {
 
     return (
       <div className ="redact">
         
-        <div>
+        <React.Fragment>
           <input type="text" ref={(input) => { this.searchInput = input }} placeholder="Enter the title"/>
-          <button onClick={this.findBook.bind(this)}>Find Book</button >
-        </div>
+          <button onClick={() => this.props.onFindBook(this.searchInput.value)}>Find Book</button >
+        </React.Fragment>
 
         <ol>
           {this.props.Books.map((Book, index) =>

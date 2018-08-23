@@ -20,11 +20,11 @@ li {
 	margin:10px;
 	color:white;
 	background-color:#4A9672FF;
-	border-radius: 15px;
+	border-radius: 25px;
 }
 
 button{
-	width:250px;
+	width:150px;
 	height:40px;
 	font-size:20px;
 	border-radius:30px;
@@ -46,6 +46,10 @@ button:hover {
 
 .redact {
 	position: fixed;
-	top: 15%;
+	top: 20%;
 	margin:10px; 
+}
+.deletButton {
+	width:40px;
+	height:40px;
 }
