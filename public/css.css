@@ -1,9 +1,9 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+
   background-image: url(https://cdn1.img.sputniknews.lt/images/136/23/1362338.jpg); cover:none;
   background-size:cover; 
+  width: 100%;
+  height:100%;
 }
 
 input {
@@ -35,17 +35,17 @@ button{
 }
 
 button:hover {
-	background:#4A9672FF;
+	background:#4A9672FF;	
 }
 
 .nav {
-	position: fixed;
+	position: absolute;
 	left: 35%;
 	margin:10px; 
 }
 
 .redact {
-	position: fixed;
+	position: absolute;
 	top: 20%;
 	margin:10px; 
 }
